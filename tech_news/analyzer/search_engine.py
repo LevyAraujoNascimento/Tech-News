@@ -3,7 +3,10 @@ from tech_news.database import db
 
 # Requisito 7
 def search_by_title(title):
-    news = list(db.news.find({"title": {"$regex": title, "$options": "i"}}))
+    # campo de busca
+    c = "title"
+
+    news = list(db.news.find({c: {"$regex": title, "$options": "i"}}))
     tuplas = []
     for new in news:
         tuplas.append((new["title"], new["url"]))
@@ -12,13 +15,15 @@ def search_by_title(title):
 
 # Requisito 8
 def search_by_date(date):
-    """Seu código deve vir aqui"""
-    raise NotImplementedError
+    pass
 
 
 # Requisito 9
 def search_by_category(category):
-    news = list(db.news.find({"category": {"$regex": category, "$options": "i"}}))
+    # campo de busca
+    c = "category"
+
+    news = list(db.news.find({c: {"$regex": category, "$options": "i"}}))
     tuplas = []
     for new in news:
         tuplas.append((new["title"], new["url"]))
