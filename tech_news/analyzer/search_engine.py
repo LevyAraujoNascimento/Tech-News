@@ -18,5 +18,8 @@ def search_by_date(date):
 
 # Requisito 9
 def search_by_category(category):
-    """Seu código deve vir aqui"""
-    raise NotImplementedError
+    news = list(db.news.find({"category": {"$regex": category, "$options": "i"}}))
+    tuplas = []
+    for new in news:
+        tuplas.append((new["title"], new["url"]))
+    return tuplas
